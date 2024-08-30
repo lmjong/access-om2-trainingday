@@ -15,8 +15,8 @@ mem: 1000GB
 # Sync options for automatically copying data from ephemeral scratch space to 
 # longer term storage
 sync:
-    enable: False # set path below and change to true
-    path: null # Set to location on /g/data or a remote server and path (rsync syntax)
+    enable: True
+    path: /g/data/tm70/aph502/training/payu_workshop_2024/data/1deg_jra55_ryf-control-d0683f7e
 
 # Model configuration
 name: common
