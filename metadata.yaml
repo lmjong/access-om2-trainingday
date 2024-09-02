@@ -1,6 +1,6 @@
 contact: Aidan Heerdegen
 email: aidan.heerdegen@anu.edu.au
-created: '2024-08-30'
+created: '2024-09-02'
 description: "1 degree ACCESS-OM2 global model configuration under the RYF9091 Repeat\n
   Year Forcing strategy outlined by Stewart et al. (2020), \nhttps://doi.org/10.1016/j.ocemod.2019.101557.\n
   The configuration is based on that described in Kiss et al. (2020),\nhttps://doi.org/10.5194/gmd-13-401-2020,
@@ -31,12 +31,12 @@ reference: https://doi.org/10.5194/gmd-13-401-2020
 license: CC-BY-4.0
 model: ACCESS-OM2
 version: '2.0'
-url: https://github.com/ACCESS-NRI/access-om2-configs
-experiment_uuid: d0683f7e-0056-419f-ab52-0535e975bf9b
-name: 1deg_jra55_ryf-control-d0683f7e
+url: https://github.com/ACCESS-Community-Hub/access-om2-1deg_jra55_ryf-example.git
+experiment_uuid: 0b3f9e79-db68-43b3-9d89-034be279b10f
+name: access-om2-1deg_jra55_ryf-example-perturb2-0b3f9e79
 schema_version:  # The version of the schema (string)
 long_description: # Long description of the experiment (string)
 frequency: # The frequency(/ies) included in the experiment (string)
 variable: # The variable(s) included in the experiment (string)
-parent_experiment: # experiment_uuid for parent experiment if appropriate (string)
+parent_experiment: d0683f7e-0056-419f-ab52-0535e975bf9b # experiment_uuid for parent experiment if appropriate (string)
 related_experiments: # experiment_uuids for any related experiment(s) (string)
