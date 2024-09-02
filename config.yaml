@@ -2,7 +2,7 @@
 
 # If submitting to a different project to your default, uncomment line below
 # and replace PROJECT_CODE with appropriate code. This may require setting shortpath
-# project: PROJECT_CODE
+project: nf33 
 
 # Force payu to always find, and save, files in this scratch project directory
 # shortpath: /scratch/PROJECT_CODE
@@ -15,57 +15,61 @@ mem: 1000GB
 # Sync options for automatically copying data from ephemeral scratch space to 
 # longer term storage
 sync:
-    enable: True
-    path: /g/data/tm70/aph502/training/payu_workshop_2024/data/1deg_jra55_ryf-control-d0683f7e
+  enable: true
+  path: 
+    /g/data/tm70/aph502/training/payu_workshop_2024/data/1deg_jra55_ryf-control-d0683f7e
 
 # Model configuration
 name: common
 model: access-om2
 input:
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_conserve2nd.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_patch.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
-  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_patch.nc
+- /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_conserve2nd.nc
+- /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/JRA55_MOM1_patch.nc
+- /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_1st_conserve.nc
+- /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_2nd_conserve.nc
+- /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jra55_cice_patch.nc
 submodels:
-    - name: atmosphere
-      model: yatm
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ltfg7jcn6t4cefotvj3kjnyu5nru26xo/bin/yatm.exe
-      input:
-            - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
-            - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
-      ncpus: 1
+- name: atmosphere
+  model: yatm
+  exe: 
+    /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/libaccessom2-git.2023.10.26=2023.10.26-ltfg7jcn6t4cefotvj3kjnyu5nru26xo/bin/yatm.exe
+  input:
+  - /g/data/vk83/experiments/inputs/access-om2/remapping_weights/JRA55/global.1deg/2020.05.30/rmp_jrar_to_cict_CONSERV.nc
+  - /g/data/vk83/experiments/inputs/JRA-55/RYF/v1-4/data
+  ncpus: 1
 
-    - name: ocean
-      model: mom
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/fms_ACCESS-OM.x
-      input:
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_mosaic.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/topog.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/ocean_mask.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.1deg/2020.10.22/ocean_vgrid.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.1deg/216.16x15/2020.05.30/ocean_mask_table
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.1deg/2020.10.22/ocean_temp_salt.res.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/tideamp.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_cdbot.nc
-          - /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
-      ncpus: 216
+- name: ocean
+  model: mom
+  exe: 
+    /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/fms_ACCESS-OM.x
+  input:
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/grid_spec.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_hgrid.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/mosaic/global.1deg/2020.05.30/ocean_mosaic.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/topog.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/bathymetry/global.1deg/2020.10.22/ocean_mask.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/grids/vertical/global.1deg/2020.10.22/ocean_vgrid.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/processor_masks/global.1deg/216.16x15/2020.05.30/ocean_mask_table
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/chlorophyll/global.1deg/2020.05.30/chl.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/initial_conditions/global.1deg/2020.10.22/ocean_temp_salt.res.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/tideamp.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_amp.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/tides/global.1deg/2020.05.30/roughness_cdbot.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ocean/surface_salt_restoring/global.1deg/2020.05.30/salt_sfc_restore.nc
+  ncpus: 216
 
-    - name: ice
-      model: cice5
-      exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-v3zncpqjj2gyseudbwiudolcjq3k3leo/bin/cice_auscom_360x300_24x1_24p.exe
-      input:
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.05.30/grid.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.10.22/kmt.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/i2o.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/o2i.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
-        - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
-      ncpus: 24
+- name: ice
+  model: cice5
+  exe: 
+    /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/cice5-git.2023.10.19=2023.10.19-v3zncpqjj2gyseudbwiudolcjq3k3leo/bin/cice_auscom_360x300_24x1_24p.exe
+  input:
+  - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.05.30/grid.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ice/grids/global.1deg/2020.10.22/kmt.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/i2o.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/o2i.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/u_star.nc
+  - /g/data/vk83/experiments/inputs/access-om2/ice/initial_conditions/global.1deg/2020.05.30/monthly_sstsss.nc
+  ncpus: 24
 
 # Collation
 collate:
@@ -74,7 +78,8 @@ collate:
   mem: 30GB
   ncpus: 4
   queue: normal
-  exe: /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/mppnccombine.spack
+  exe: 
+    /g/data/vk83/apps/spack/0.20/release/linux-rocky8-x86_64/intel-19.0.5.281/mom5-git.2023.11.09=2023.11.09-qji4nlmr6utrribaiyhewe4je6mifguz/bin/mppnccombine.spack
 
 # Misc
 runlog: true
@@ -83,18 +88,20 @@ restart_freq: 5YS
 mpirun: --mca io ompio --mca io_ompio_num_aggregators 1
 qsub_flags: -W umask=027
 env:
-    UCX_LOG_LEVEL: 'error'
+  UCX_LOG_LEVEL: error
 
 manifest:
   reproduce:
-    exe: True
+    exe: true
 
 # set number of cores per node (28 for normalbw, 48 for normal on gadi)
 platform:
-    nodesize: 48
+  nodesize: 48
 
 # sweep and resubmit on specific errors - see https://github.com/payu-org/payu/issues/241#issuecomment-610739771
 userscripts:
-    error: tools/resub.sh
-    run: rm -f resubmit.count
-    sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
+  error: tools/resub.sh
+  run: rm -f resubmit.count
+  sync: /g/data/vk83/apps/om2-scripts/concatenate_ice/concat_ice_daily.sh
+restart: 
+  /g/data/nf33/public/training-day-2024/payu-training/experiments/1deg_jra55_ryf-control-d0683f7e/restart012

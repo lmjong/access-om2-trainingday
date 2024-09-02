@@ -106,7 +106,7 @@
 &shortwave_nml
     ahmax             = 0.1
     albedo_type       = 'default'
-    albicei           = 0.44
+    albicei           = 0.64
     albicev           = 0.86
     albsnowi          = 0.7
     albsnowv          = 0.98
